@@ -1,7 +1,30 @@
-<MyLayout>
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Goto increase App'
+            on_press: root.manager.current = 'increase'
+        Button:
+            text: 'Goto move App'
+            on_press: root.manager.current = 'move'
+        Button:
+            text: 'Exit'
+            on_press: exit()
+
+
+<DrowLayout>
     id: my_widget
     FloatLayout:
         size: root.width, root.height
+
+<BaseLayout>
+    FloatLayout:
+        size: root.width, root.height
+        Button:
+            size_hint: 1, 0.05 
+            pos_hint: {'x': 0,'y': 0}
+            text: 'Back to menu'
+            on_press: root.btn()
 
 <DrowImg>
     FloatLayout:
