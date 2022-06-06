@@ -9,6 +9,7 @@ from kivy.core.window import Window
 #from kivy.uix.screenmanager import ScreenManager, Screen
 
 import common
+from settings import PM
 
 #背景を白色に
 Window.clearcolor = (1, 1, 1, 1)
@@ -25,7 +26,7 @@ class ImageManage(common.SuperImageManage):
         self.wname = []
 #表示する画像のオブジェクト名を動的に生成
 #50個まで表示できるようにする
-        for i in range(50):
+        for i in range(100):
             self.wname.append(['tet' + str(i)])
 
 #タップ時に画像を表示する
@@ -41,7 +42,7 @@ class BaseLayout(common.SuperBaseLayout):
 class DrowLayout(Widget):
     def on_touch_down(self, touch):
 #画像が50個を越えたら最初に戻す
-        num = IM.count % 50
+        num = IM.count % PM.qua
 #元々あった画像を削除する
         try:
             self.remove_widget(IM.wname[num])

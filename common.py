@@ -9,6 +9,7 @@ from kivy.properties import NumericProperty
 
 from kivy.uix.screenmanager import ScreenManager, Screen
 
+from settings import PM
 
 #表示する画像の管理
 class SuperImageManage():
@@ -42,10 +43,12 @@ class SuperBaseLayout(Screen):
 class SuperDrowImg(Widget):
     x_img_pos = NumericProperty(3)
     y_img_pos = NumericProperty(3)
+    size = NumericProperty()
  
     def __init__(self, x, y, num, **kwargs):
         img = random.randint(0, num - 1)
         super(SuperDrowImg, self).__init__(**kwargs)
+        self.size = PM.size
         self.x_img_pos = x / 100
         self.y_img_pos = y/ 100 
         return img

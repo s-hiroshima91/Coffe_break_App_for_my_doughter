@@ -9,6 +9,7 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 
 import common
+from settings import PM
 
 #背景を白色に
 Window.clearcolor = (1, 1, 1, 1)
@@ -21,10 +22,10 @@ Config.set('graphics', 'resizable', 1)
 
 def move_func(dt):
     d = IM.VE.length
-    int_d = int(d / 100)
+    int_d = int(d / PM.speed)
     if (IM.flag <= int_d + 1):
         Clock.schedule_once(move_func, 0.01)
-        pos = IM.VE.equation(IM.flag * 100)
+        pos = IM.VE.equation(IM.flag * PM.speed)
         IM.wname.x_img_pos = float(pos[0])
         IM.wname.y_img_pos = float(pos[1])
         IM.flag += 1
@@ -70,7 +71,7 @@ class BaseLayout(common.SuperBaseLayout):
 class DrowLayout(Widget):
     def on_touch_down(self, touch):
 #画像が50個を越えたら最初に戻す
-        num = IM.count % 4
+        num = IM.count % PM.times
 
 #タップした場所を取得
         x = touch.pos[0]

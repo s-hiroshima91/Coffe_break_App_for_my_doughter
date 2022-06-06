@@ -3,11 +3,13 @@ import kivy
 from kivy.app import App
 from kivy.config import Config
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.slider import Slider
 
 import increase
 import move
+import trace
+import settings
 
-# Declare both screens
 class MenuScreen(Screen):
     pass
 
@@ -22,8 +24,10 @@ class TapApp(App):
         self.title = "window"
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))
+        sm.add_widget(settings.Setting(name='settings'))
         sm.add_widget(increase.BaseLayout(name='increase'))
         sm.add_widget(move.BaseLayout(name='move'))
+        sm.add_widget(trace.BaseLayout(name='trace'))
         
         return sm
 
